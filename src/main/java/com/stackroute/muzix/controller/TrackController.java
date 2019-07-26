@@ -8,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.HashSet;
 import java.util.List;
 
 
@@ -80,5 +78,12 @@ public class TrackController {
             return new ResponseEntity(e.getMessage(),HttpStatus.CONFLICT);
         }
 
+    }
+    //fetching all top tracks
+    @GetMapping("track/muzix")
+    public ResponseEntity<?> getAllTrackFromLastFm()
+    {
+        trackService.getTopTracks();
+        return new ResponseEntity<>("fetched.....", HttpStatus.OK);
     }
 }

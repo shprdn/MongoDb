@@ -3,6 +3,7 @@ package com.stackroute.muzix.service;
 import com.stackroute.muzix.domain.Track;
 import com.stackroute.muzix.exceptions.TrackAlreadyExistsException;
 import com.stackroute.muzix.exceptions.TrackNotFoundException;
+import org.springframework.http.ResponseEntity;
 
 import java.util.List;
 
@@ -26,5 +27,11 @@ public interface TrackService {
 
     //find by name
     Track findByName(String name) ;
+
+    //list the top tracks of last.fm
+    void getTopTracks();
+
+
+
 
 }
