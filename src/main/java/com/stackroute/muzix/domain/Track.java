@@ -27,5 +27,8 @@ public class Track {
     @Column
     private String comment;
 
-
+    public Track(String name, String comment) {
+        this.name = name;
+        this.comment = comment;
+    }
 }

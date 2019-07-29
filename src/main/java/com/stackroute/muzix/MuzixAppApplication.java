@@ -15,25 +15,25 @@ import org.springframework.boot.web.servlet.support.SpringBootServletInitializer
 //@Configuration
 //@EnableAutoConfiguration
 //@ComponentScan
-public class MuzixAppApplication implements CommandLineRunner {
+public class MuzixAppApplication{// implements CommandLineRunner {
 
-	TrackService trackService;
-	@Autowired
-	public void setTrackService(TrackService trackService) {
-		this.trackService = trackService;
-	}
-
-	@Override
-	public void run(String... args) throws Exception {
-		//seed data to pre-fill the database with track
-		//information whenever the application starts
-		trackService.saveTrack(new Track(20,"main hoon hero tera","Armaan Malik"));
-		trackService.saveTrack(new Track(21,"suraj dooba hai","Amaal Malik"));
-		logger.info("Applicaton started using command line runner");
-	}
-
-	protected final Log logger = LogFactory.getLog(getClass());
-	//muzixApp having main method
+//	TrackService trackService;
+//	@Autowired
+//	public void setTrackService(TrackService trackService) {
+//		this.trackService = trackService;
+//	}
+//
+//	@Override
+//	public void run(String... args) throws Exception {
+//		//seed data to pre-fill the database with track
+//		//information whenever the application starts
+//		trackService.saveTrack(new Track(20,"main hoon hero tera","Armaan Malik"));
+//		trackService.saveTrack(new Track(21,"suraj dooba hai","Amaal Malik"));
+//		logger.info("Applicaton started using command line runner");
+//	}
+//
+//	protected final Log logger = LogFactory.getLog(getClass());
+//	//muzixApp having main method
 	public static void main(String[] args) throws Exception
 	{
 		SpringApplication.run(MuzixAppApplication.class, args);

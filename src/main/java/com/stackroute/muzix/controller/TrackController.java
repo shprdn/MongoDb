@@ -31,8 +31,14 @@ public class TrackController {
     {
         ResponseEntity responseEntity;
         //exception handling using global exception
-         trackService.saveTrack(track);
-            responseEntity = new ResponseEntity<String>("successfully created", HttpStatus.CREATED);
+        try {
+            trackService.saveTrack(track);
+            responseEntity = new ResponseEntity<String>("Successfully Created", HttpStatus.CREATED);
+        } catch (TrackAlreadyExistsException e) {
+            System.out.println("msg" + e.getMessage());
+            responseEntity = new ResponseEntity<String>(e.getMessage(),HttpStatus.CONFLICT);
+            e.printStackTrace();
+        }
             return responseEntity;
     }
     //mapping done for fetching all tracks

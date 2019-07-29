@@ -31,6 +31,8 @@ public interface TrackService {
     //list the top tracks of last.fm
     void getTopTracks();
 
+    Track getTrackById(int id);
+
 
 
 
