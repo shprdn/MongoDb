@@ -72,10 +72,9 @@ public class TrackServiceImpl implements TrackService {
     }
     //find using name
     @Override
-    public Track findByName(String name)
+    public List<Track> findByName(String name)
     {
-        Track track1 = trackRepository.findUserByName(name);
-        return track1;
+        return trackRepository.findByName(name);
     }
 
     @Override

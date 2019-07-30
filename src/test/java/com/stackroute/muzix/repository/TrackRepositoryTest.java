@@ -7,13 +7,14 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.List;
 
 @RunWith(SpringRunner.class)
-@DataJpaTest
+@DataMongoTest
 public class TrackRepositoryTest {
 
     @Autowired
@@ -41,7 +42,7 @@ public class TrackRepositoryTest {
     public void testSaveUser(){
         trackRepository.save(track);
         Track fetchUser = trackRepository.findById(track.getId()).get();
-        Assert.assertEquals(1,fetchUser.getId());
+        Assert.assertEquals(0,fetchUser.getId());
     }
     //test case to check savetrack method for failure case
     @Test
@@ -54,8 +55,8 @@ public class TrackRepositoryTest {
     //test case to check for getAllTracks method
     @Test
     public void testGetAllUser(){
-         Track t = new Track("Dil me ho tum","Armaan Malik");
-         Track t1 = new Track("suraj dooba hai","Amaal Malik");
+         Track t = new Track(1,"Dil me ho tum","Armaan Malik");
+         Track t1 = new Track(2,"suraj dooba hai","Amaal Malik");
         trackRepository.save(t);
         trackRepository.save(t1);
 
@@ -66,7 +67,7 @@ public class TrackRepositoryTest {
     @Test
     public void testUpdateTrack(){
         trackRepository.save(track);
-        Track track1 = new Track(track.getId(),"Despacito","Spanish");
+        Track track1 = new Track(1,"Despacito","Spanish");
         trackRepository.save(track1);
         Assert.assertEquals(track1,trackRepository.findById(track1.getId()).get());
     }
@@ -75,7 +76,7 @@ public class TrackRepositoryTest {
     public void testDeleteTrack()
     {
         //System.out.println(track.getId());
-        Track track1 = new Track("Senorita","jnmd");
+        Track track1 = new Track(1,"Senorita","jnmd");
         trackRepository.save(track1);
         trackRepository.deleteById(1);
         Assert.assertNull(trackRepository.findById(track.getId()).orElse(null));

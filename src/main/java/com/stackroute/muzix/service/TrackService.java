@@ -26,7 +26,7 @@ public interface TrackService {
     public Track updateTrack(Track track);
 
     //find by name
-    Track findByName(String name) ;
+    List<Track> findByName(String name) ;
 
     //list the top tracks of last.fm
     void getTopTracks();
